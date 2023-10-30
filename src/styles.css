@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+:root {
+  --fontsize-14: 14px;
+}
+
+.custom-mr-3 {
+  margin-right: 1rem;
+}
+
+.custom-ml-3 {
+  margin-left: 1rem;
+}
+
+.colorOfFont {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.cursor_pointer {
+  cursor: pointer !important;
+}
+
+.cursor_pointer:hover {
+  color: blue !important;
+  font-weight: 500 !important;
+}
+
+.info-widget {
+  width: auto;
+  display: inline-block;
+  margin-right: 28px;
+  position: relative;
+}
+
+.info-widget .img_drop {
+  position: absolute;
+  height: 10px;
+  top: 7px;
+}
+
+/* .middle {
+  float: left;
+  width: 98%;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: hidden;
+  padding: 0px 20px;
+} */
+
+.fontsize-14 {
+  font-size: var(--fontsize-14);
+}
+
+.celias {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 400;
+}

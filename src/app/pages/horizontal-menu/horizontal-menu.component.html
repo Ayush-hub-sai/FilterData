@@ -1,0 +1,12 @@
+<section class="mb-3 horizontal_menu">
+  <div class="container">
+    <div #widgetsContent class="middle">
+      <div class="info-widget celias fontsize-14 cursor_pointer" *ngFor="let category of shop_categories_horizontal"
+        (mouseenter)="mouseEnter(category)">
+        <span (click)="viewCategory(category, $event)">{{category?.categoryName}}</span>
+        <!-- *ngIf="viewSubcategory(category)" -->
+        <img src="assets/icon/dropdownmenu.svg" class="img_drop" />
+      </div>
+    </div>
+  </div>
+</section>

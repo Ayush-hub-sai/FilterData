@@ -1,0 +1,67 @@
+<div class="container-fluid bg-primary p-3">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="d-flex">
+        <div class="col-md-2">
+          <span class="colorOfFont"> GokartDaddy</span>
+        </div>
+
+        <div class="col-md-8">
+          <form class="d-flex">
+            <div class="col-md-8">
+              <div class="custom-mr-3">
+                <input type="search" autocomplete="off" [(ngModel)]="searchqry" name="searchqry"
+                  class="form-control rounded" placeholder="Search for Products, Brands and More..."
+                  (keyup)="searchAutoComplete()" />
+                <!-- [ngModelOptions]="{ standalone: true }" (keyup.enter)="postSearchnew()"
+                (click)="headerSearchCss()" -->
+              </div>
+            </div>
+
+            <!-- <span class=""><i class="fas fa-search"></i></span> -->
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="d-flex justify-content-end">
+
+        <div class="custom-mr-3">
+
+          <div ngbDropdown container="body">
+            <button type="button" class="btn btn-outline-warning btn-md colorOfFont " ngbDropdownToggle>
+              <i class="fas fa-user"></i>
+              Sign In
+            </button>
+
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem>New Customer?
+                <a href="" class="text-decoration-none custom-ml-3"><b> Sign Up</b></a>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button ngbDropdownItem> <i class="fas fa-user custom-mr-3 "></i> My Profile</button>
+              <button ngbDropdownItem><i class="fas fa-gift custom-mr-3 "></i> Orders</button>
+              <button ngbDropdownItem> <i class="fas fa-heart custom-mr-3 "></i>Wishlist</button>
+
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" class="btn btn-outline-warning btn-md colorOfFont position-relative"
+            (click)="goToCart()">
+            <i class="fas fa-shopping-cart"></i> Cart
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ totalQuantityInCart() }}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <app-horizontal-menu [shop_categories_horizontal]="category"></app-horizontal-menu>
+</section>

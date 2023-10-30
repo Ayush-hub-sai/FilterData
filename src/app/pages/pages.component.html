@@ -1,0 +1,3 @@
+<app-header (dataEvent)="receiveDataFromChild($event)" [productCartFromParent]="sendDataToCart"></app-header>
+<app-product [productBySearch]=" receivedSearchQry" (productCart)="addToProductCart($event)"> </app-product>
+<app-footer></app-footer>

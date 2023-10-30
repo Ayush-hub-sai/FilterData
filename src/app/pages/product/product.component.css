@@ -1,0 +1,25 @@
+/* .fixed-image {
+  height: 200px;
+  object-fit: cover;
+} */
+.tab-content {
+  display: none;
+}
+
+.card {
+  height: 20rem !important;
+}
+
+.img_height {
+  height: 20rem !important;
+}
+
+.fixed_image {
+  height: 10.7rem !important;
+  width: 100% !important;
+  /* border-radius: 0 0 12px 12px; */
+}
+
+.hover-tab:hover+.tab-content {
+  display: block;
+}

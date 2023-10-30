@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class=" col-lg-3 col-md-3 col-sm-3 " *ngFor="let item of products">
+      <div class="card mt-2 mb-2 ml-2 mr-2">
+        <div class="img_height">
+          <img class="fixed_image" [src]="item.imageUrl" alt="{{ item.name }}" />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-primary" (click)="addToCart(item)">Add to Cart</button>
+            <button class="btn btn-primary" (click)="buyNow(item)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div *ngIf="products.length==0">
+    <h4 class="text-center my-4">No Records Found....</h4>
+  </div>
+</section>
