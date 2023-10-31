@@ -9,7 +9,7 @@
         <h5>Your Basket ({{ totalQuantityInCart() }} items) </h5>
       </div>
       <div>
-        <button type="button" class="btn btn-danger"> Add More</button>
+        <button type="button" class="btn btn-danger cursor_pointer" (click)="goToHome()"> Add More</button>
       </div>
     </div>
   </section>
@@ -97,7 +97,7 @@
                 </button>
               </div>
               <div class="text-center mt-2">
-                <a class="text_Decoration">Clear Cart</a>
+                <a class="text_Decoration" (click)="clearCart()">Clear Cart</a>
               </div>
 
             </div>

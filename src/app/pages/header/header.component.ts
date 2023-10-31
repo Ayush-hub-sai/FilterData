@@ -33,4 +33,7 @@ export class HeaderComponent implements OnInit {
     return this.productCartFromParent?.reduce((total, cartItem) => total + cartItem.itemQty, 0);
   }
 
+  goToHome() {
+    this.router.navigate(['pages'])
+  }
 }

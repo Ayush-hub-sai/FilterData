@@ -22,10 +22,10 @@
   cursor: pointer !important;
 }
 
-.cursor_pointer:hover {
+/* .cursor_pointer:hover {
   color: blue !important;
   font-weight: 500 !important;
-}
+} */
 
 .info-widget {
   width: auto;

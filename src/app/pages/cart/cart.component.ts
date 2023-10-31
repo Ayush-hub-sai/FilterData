@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
@@ -15,6 +16,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private spinner: NgxUiLoaderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -45,5 +47,14 @@ export class CartComponent implements OnInit {
 
   grandTotal() {
     return Math.round(this.total + this.deliveryTot + this.taxTot)
+  }
+
+  goToHome() {
+    this.router.navigate(['pages'])
+  }
+
+  clearCart() {
+    localStorage.removeItem("localStorageCart")
+    this.router.navigate(['pages'])
   }
 }
