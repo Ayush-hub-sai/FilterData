@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-cart',
@@ -12,10 +13,15 @@ export class CartComponent implements OnInit {
   deliveryTot: number = 0
   taxTot: number = 0
 
-  constructor() { }
+  constructor(
+    private spinner: NgxUiLoaderService,
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.cartProductByLocal);
+    this.spinner.start()
+    setTimeout(() => {
+      this.spinner.stop()
+    }, 1000);
   }
 
   totalQuantityInCart(): number {
