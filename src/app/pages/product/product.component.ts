@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -14,10 +14,12 @@ export class ProductComponent implements OnInit, OnChanges {
   quantiy: number = 0
   addCartProduct: any = []
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private toastr: ToastrService
+  ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   ngOnChanges(changes: SimpleChanges) {
     var searchChanges = changes["productBySearch"].currentValue
@@ -36,11 +38,21 @@ export class ProductComponent implements OnInit, OnChanges {
     const existingItem = this.addCartProduct.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
       existingItem.itemQty++;
-    } else {
+      var itemPrice: number = 0;
+      itemPrice = item.price;
+      if (isNaN(existingItem.subTotal)) {
+        existingItem.subTotal = 0;
+      }
+      existingItem.subTotal = itemPrice + existingItem.subTotal;
+    }
+    else {
       item.itemQty = 1;
+      item.subTotal = item.price
       this.addCartProduct.push(item);
     }
+    localStorage.setItem("localStorageCart", JSON.stringify(this.addCartProduct))
     this.productCart.emit(this.addCartProduct);
+    this.toastr.success('Cart details updated successfully!');
   }
 
   buyNow(item) {

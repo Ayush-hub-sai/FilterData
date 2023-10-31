@@ -21,8 +21,6 @@ export class HeaderComponent implements OnInit {
     this.category = category
   }
 
-
-
   searchAutoComplete() {
     this.dataEvent.emit(this.searchqry);
   }

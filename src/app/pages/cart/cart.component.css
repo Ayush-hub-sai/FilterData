@@ -1,0 +1,15 @@
+.setImage {
+  height: 41px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.text_Decoration {
+  cursor: pointer;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+.text_Decoration:hover {
+  text-decoration: underline;
+}

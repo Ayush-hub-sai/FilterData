@@ -1,3 +1,115 @@
-<app-header></app-header>
+<div class="header-wrapper">
+  <app-header></app-header>
+</div>
 
+<div class="content-wrapper">
+  <section>
+    <div class="container d-flex justify-content-between">
+      <div>
+        <h5>Your Basket ({{ totalQuantityInCart() }} items) </h5>
+      </div>
+      <div>
+        <button type="button" class="btn btn-danger"> Add More</button>
+      </div>
+    </div>
+  </section>
+  <section class="mt-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <table class="table">
+            <thead class="table-light">
+              <tr>
+                <th>Order Items</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngIf="cartProductByLocal.length>0">
+              <tr *ngFor="let item of cartProductByLocal">
+                <td>
+                  <span>
+                    <img src="{{ item.imageUrl }}" alt="" class="setImage">
+                  </span>
+                  {{item.name}}
+                </td>
+                <td>{{item.price}}</td>
+                <td>{{item.itemQty}}</td>
+                <td>{{item.subTotal}}</td>
+                <td><button type="button" class="btn-close" aria-label="Close"></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-4">
+          <div class="card  mb-5">
+            <div class="card-body">
+              <div class="d-flex justify-content-between ">
+                <div>
+                  <h5>Item Total</h5>
+                </div>
+                <div>
+                  <span> ₹ <span>{{itemTotal()}}</span></span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4 ">
+                <div>
+                  <h5>Delivery Charges</h5>
+                </div>
+                <div>
+                  <span> ₹ <span>{{deliveryCharges()}}</span></span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4 ">
+                <div>
+                  <h5>Taxes & Charges </h5>
+                </div>
+                <div>
+                  <span> ₹ <span>{{taxCharges()}}</span></span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4 ">
+                <div>
+                  <h5>Grand Total</h5>
+                </div>
+                <div>
+                  <span> ₹ <span>{{grandTotal() }}</span></span>
+                </div>
+              </div>
+
+              <!-- <div class="d-flex justify-content-between mt-4 ">
+                <div>
+                  <h5>Total Savings</h5>
+                </div>
+                <div>
+                  <span> ₹ <span>hiiiii</span></span>
+                </div>
+              </div> -->
+
+              <div class="text-center mt-3">
+                <button type="button" class="btn btn-danger btn-lg">
+                  Sign In / Sign Up
+                </button>
+              </div>
+              <div class="text-center mt-2">
+                <a class="text_Decoration">Clear Cart</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <h5>Add More Items</h5>
+    </div>
+  </section>
+</div>
 <app-footer></app-footer>
