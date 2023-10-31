@@ -2,7 +2,7 @@
   <app-header></app-header>
 </div>
 
-<div class="content-wrapper">
+<div class="content-wrapper" *ngIf="cartProductByLocal?.length>0">
   <section>
     <div class="container d-flex justify-content-between">
       <div>
@@ -27,7 +27,7 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody *ngIf="cartProductByLocal.length>0">
+            <tbody *ngIf="cartProductByLocal?.length>0">
               <tr *ngFor="let item of cartProductByLocal">
                 <td>
                   <span>
@@ -112,4 +112,18 @@
     </div>
   </section>
 </div>
-<app-footer></app-footer>
+
+<div class="content-wrapper" *ngIf="noProduct">
+  <section class="text-center ">
+    <div class="container">
+      <div class="mt-2">
+        <img src="assets/icon/empty-box-svg-new.svg" alt="empty-box">
+      </div>
+      <h5 class="mt-3">Your cart is empty</h5>
+      <button type="button" class="btn btn-danger mt-3" (click)="goToHome()">Go to Home</button>
+    </div>
+  </section>
+</div>
+<div class="mt-3">
+  <app-footer></app-footer>
+</div>
