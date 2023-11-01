@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ToastrService } from 'ngx-toastr';
+// declare var bootstrap: any;
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -58,4 +60,12 @@ export class ProductComponent implements OnInit, OnChanges {
   buyNow(item) {
   }
 
+
+  // ngAfterViewInit(): void {
+  //   // Initialize the carousel
+  //   const myCarousel = document.getElementById('myCarousel');
+  //   const carousel = new bootstrap.Carousel(myCarousel, {
+  //     interval: 1000, // Set the desired interval (in milliseconds), or use `false` for no automatic sliding.
+  //   });
+  // }
 }
