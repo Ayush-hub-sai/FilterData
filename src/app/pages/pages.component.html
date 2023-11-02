@@ -1,8 +1,8 @@
 <div class="header-wrapper">
-  <app-header (dataEvent)="receiveDataFromChild($event)" [productCartFromParent]="sendDataToCart"></app-header>
+  <!-- (dataEvent)="receiveDataFromChild($event)" [productCartFromParent]="sendDataToCart" -->
+  <app-header></app-header>
 </div>
 <div class="content-wrapper">
-  <app-product [productBySearch]="receivedSearchQry" (productCart)="addToProductCart($event)"></app-product>
+  <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>
-

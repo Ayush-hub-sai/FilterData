@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ToastrService } from 'ngx-toastr';
-// declare var bootstrap: any;
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-product',
@@ -15,25 +15,78 @@ export class ProductComponent implements OnInit, OnChanges {
   @Output() productCart = new EventEmitter<any>();
   quantiy: number = 0
   addCartProduct: any = []
+  customOptions: OwlOptions = {};
 
   constructor(
     private productService: ProductService,
     private toastr: ToastrService
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getProducts()
+    this.call()
+
+
+  }
+
+  call() {
+    this.customOptions = {
+      loop: false,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: false,
+      dots: false,
+      margin: 24,
+      navSpeed: 500,
+      navText: [' < ', ' > '],
+      skip_validateItems: true,
+      rewind: true,
+      // slideBy: this.itemBlockParams.slideBy,
+      // autoplay:true,
+      nav: true,
+      autoHeight: true,
+      autoWidth: true,
+      lazyLoadEager: 3,
+      lazyLoad: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        400: {
+          items: 2
+        },
+        740: {
+          items: 3
+        },
+        940: {
+          items: 4
+        },
+        1000: {
+          items: 5
+          // this.itemBlockParams.itemCount > 10
+          //   ? 10
+          //   : this.itemCount,
+        },
+      },
+    }
+  }
+
+  getProducts() {
+    this.staticProduct = this.productService.getProducts()
+    this.products = this.staticProduct
+  }
 
   ngOnChanges(changes: SimpleChanges) {
-    var searchChanges = changes["productBySearch"].currentValue
-    if (searchChanges == "") {
-      this.staticProduct = this.productService.getProducts()
-      this.products = this.staticProduct
-    }
-    else {
-      var tempProduct: any
-      tempProduct = this.productService.filterProducts(searchChanges)
-      this.products = tempProduct
-    }
+    // var searchChanges = changes["productBySearch"].currentValue
+    // if (searchChanges == "") {
+    //   this.staticProduct = this.productService.getProducts()
+    //   this.products = this.staticProduct
+    // }
+    // else {
+    //   var tempProduct: any
+    //   tempProduct = this.productService.filterProducts(searchChanges)
+    //   this.products = tempProduct
+    // }
   }
 
   addToCart(item) {
@@ -59,13 +112,11 @@ export class ProductComponent implements OnInit, OnChanges {
 
   buyNow(item) {
   }
-
-
-  // ngAfterViewInit(): void {
-  //   // Initialize the carousel
-  //   const myCarousel = document.getElementById('myCarousel');
-  //   const carousel = new bootstrap.Carousel(myCarousel, {
-  //     interval: 1000, // Set the desired interval (in milliseconds), or use `false` for no automatic sliding.
-  //   });
-  // }
+  
+  changeFavourite(item: any) {
+    const favourite = this.products.find(cartItem => cartItem.id === item.id);
+    if (favourite) {
+      favourite.favourite = favourite.favourite == true ? false : true
+    }
+  }
 }

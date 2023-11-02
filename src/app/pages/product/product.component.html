@@ -1,51 +1,72 @@
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-
-<div class="container">
-  <div class="row">
-    <div class=" col-lg-3 col-md-3 col-sm-3 " *ngFor="let item of products">
-      <div class="card mt-2 mb-2 ml-2 mr-2">
-        <div class="img_height">
-          <img class="fixed_image" [src]="item.imageUrl" alt="{{ item.name }}" />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.description }}</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-primary" (click)="addToCart(item)">Add to Cart</button>
-            <button class="btn btn-primary" (click)="buyNow(item)">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <section>
-  <div class="container mb-5">
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/image/globalBanner.png" class="d-block w-100" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img src="assets/image/car.png" class="d-block w-100" alt="Second slide">
-        </div>
-      </div>
-
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </a>
-    </div>
+  <div class="container">
+    <h2 class="fontsize-24 Celias-bold">Cart Collection (Do not change)</h2>
   </div>
 </section>
-
 <section>
-  <div *ngIf="products.length==0">
-    <h4 class="text-center my-4">No Records Found....</h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-md-12 col-12">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let slide of products">
+            <ng-template class="item-block" carouselSlide [id]="slide.id">
+              <!-- <app-item-block [products]="products"></app-item-block> -->
+
+              <div class="card mt-2 mb-2 ml-2 mr-2">
+                <div class="img_height">
+                  <img class="fixed_image" [src]="slide.imageUrl" alt="{{ slide.name }}" />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title fontsize-13">{{ slide.brand}}</h5>
+                  <h5 class="card-text fontsize-15">{{ slide.name }}</h5>
+                  <h5>&nbsp;</h5>
+                  <h5 class="card-text fontsize-15">₹ {{ slide.price }}</h5>
+
+                  <div class="d-flex justify-content-between">
+                    <img class="imgwidthauto cursor_pointer" *ngIf="slide.favourite" src="assets/icon/icons-16.svg"
+                      alt="" (click)="changeFavourite(slide)" />
+                    <img class="imgwidthauto cursor_pointer" *ngIf="!slide.favourite" src="assets/icon/icons-12.svg"
+                      alt="" (click)="changeFavourite(slide)" />
+
+                    <div role="button" class="add-quntity-list">
+                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 41 41"
+                        xml:space="preserve" width="35px" height="32px">
+                        <style type="text/css">
+                          .st0 {
+                            fill: #FFFFFF;
+                          }
+
+                          .st1 {
+                            fill: #E2E2E2;
+                          }
+
+                        </style>
+                        <g>
+                          <g>
+                            <path
+                              d="M35.5,40.5h-30c-2.8,0-5-2.2-5-5v-30c0-2.8,2.2-5,5-5h30c2.8,0,5,2.2,5,5v30C40.5,38.3,38.3,40.5,35.5,40.5z"
+                              class="st0"></path>
+                            <path d="M35.5,41h-30c-3,0-5.5-2.5-5.5-5.5v-30C0,2.5,2.5,0,5.5,0h30c3,0,5.5,2.5,5.5,5.5v30C41,38.5,38.5,41,35.5,41
+                          z M5.5,1C3,1,1,3,1,5.5v30C1,38,3,40,5.5,40h30c2.5,0,4.5-2,4.5-4.5v-30C40,3,38,1,35.5,1H5.5z"
+                              class="st1"></path>
+                          </g>
+                          <path
+                            d="M30,19.2h-8.2V11c0-0.7-0.5-1.2-1.2-1.2c-0.7,0-1.2,0.5-1.2,1.2v8.2H11c-0.7,0-1.2,0.5-1.2,1.2c0,0.7,0.5,1.2,1.2,1.2h8.2
+                      V30c0,0.7,0.5,1.2,1.2,1.2c0.7,0,1.2-0.5,1.2-1.2v-8.2H30c0.7,0,1.2-0.5,1.2-1.2C31.2,19.8,30.7,19.2,30,19.2z">
+                          </path>
+                        </g>
+                      </svg>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
   </div>
 </section>

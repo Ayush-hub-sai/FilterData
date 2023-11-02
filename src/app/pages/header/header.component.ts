@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goToCart() {
-    this.router.navigate(["pages/cart"])
+    this.router.navigate(["/cart"])
   }
 
   totalQuantityInCart(): number {
@@ -34,6 +34,6 @@ export class HeaderComponent implements OnInit {
   }
 
   goToHome() {
-    this.router.navigate(['pages'])
+    this.router.navigate(["/"])
   }
 }

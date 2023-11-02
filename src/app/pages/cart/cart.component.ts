@@ -55,11 +55,11 @@ export class CartComponent implements OnInit {
   }
 
   goToHome() {
-    this.router.navigate(['pages'])
+    this.router.navigate(['/'])
   }
 
   clearCart() {
     localStorage.removeItem("localStorageCart")
-    this.router.navigate(['pages'])
+    this.router.navigate(['/'])
   }
 }

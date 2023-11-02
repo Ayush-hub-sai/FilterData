@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from "ngx-ui-loader"
+import { CarouselModule } from 'ngx-owl-carousel-o';
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Loading...",
   textColor: "white",
@@ -30,9 +31,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       progressBar: true,
       closeButton: true,
     }),
-    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
-
-
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    CarouselModule 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
