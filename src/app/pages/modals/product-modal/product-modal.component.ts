@@ -8,7 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class ProductModalComponent implements OnInit {
 
   ngOnInit(): void {
-    console.log("bishu behera");
-
   }
 }

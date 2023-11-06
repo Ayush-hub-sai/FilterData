@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { category } from 'src/app/enum/category';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -13,9 +14,16 @@ export class HeaderComponent implements OnInit {
   searchqry: any
 
   @Output() dataEvent = new EventEmitter<any>();
-  @Input() productCartFromParent: any;
+  productCartFromParent: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private _cartService: CartService) {
+
+    this._cartService.cartItem.subscribe(products => {
+      this.productCartFromParent = products
+    });
+
+  }
 
   ngOnInit(): void {
     this.category = category

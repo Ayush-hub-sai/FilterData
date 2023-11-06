@@ -9,6 +9,5 @@ export class ItemBlockComponent implements OnInit {
   @Input() products
 
   ngOnInit(): void {
-    console.log(this.products);
   }
 }

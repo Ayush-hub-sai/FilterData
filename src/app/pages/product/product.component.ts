@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import { ProductService } from 'src/app/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -19,17 +20,22 @@ export class ProductComponent implements OnInit, OnChanges {
 
   constructor(
     private productService: ProductService,
-    private toastr: ToastrService
-  ) { }
+    private toastr: ToastrService,
+    private _cartService: CartService
+  ) {
+  }
 
   ngOnInit(): void {
     this.getProducts()
-    this.call()
-
-
+    this.forCareousalcall()
   }
 
-  call() {
+  getProducts() {
+    this.staticProduct = this.productService.getProducts()
+    this.products = this.staticProduct
+  }
+
+  forCareousalcall() {
     this.customOptions = {
       loop: false,
       mouseDrag: true,
@@ -71,11 +77,6 @@ export class ProductComponent implements OnInit, OnChanges {
     }
   }
 
-  getProducts() {
-    this.staticProduct = this.productService.getProducts()
-    this.products = this.staticProduct
-  }
-
   ngOnChanges(changes: SimpleChanges) {
     // var searchChanges = changes["productBySearch"].currentValue
     // if (searchChanges == "") {
@@ -105,12 +106,11 @@ export class ProductComponent implements OnInit, OnChanges {
       item.subTotal = item.price
       this.addCartProduct.push(item);
     }
-    localStorage.setItem("localStorageCart", JSON.stringify(this.addCartProduct))
-    this.productCart.emit(this.addCartProduct);
-    this.toastr.success('Cart details updated successfully!');
-  }
 
-  buyNow(item) {
+    this._cartService.cartItem.next(this.addCartProduct)
+    // localStorage.setItem("localStorageCart", JSON.stringify(this.addCartProduct))
+    // this.productCart.emit(this.addCartProduct);
+    this.toastr.success('Cart details updated successfully!');
   }
 
   changeFavourite(item: any) {
@@ -118,11 +118,11 @@ export class ProductComponent implements OnInit, OnChanges {
     if (favourite) {
       favourite.favourite = favourite.favourite == true ? false : true
     }
+    if (favourite.favourite) {
+      this.toastr.success('Item added to favourite successfully');
+    } else {
+      this.toastr.success('Item removed from favourite successfully');
+    }
   }
 
-
-  goToDetails(slide) {
-    console.log(slide);
-
-  }
 }

@@ -12,7 +12,7 @@
             <ng-template class="item-block " carouselSlide [id]="slide.id">
               <!-- <app-item-block [products]="products"></app-item-block> -->
 
-              <div class="card mt-2 mb-2 ml-2 mr-2 " (click)="goToDetails(slide)">
+              <div class="card mt-2 mb-2 ml-2 mr-2 ">
                 <div class="img_height cursor_pointer">
                   <img class="fixed_image" [src]="slide.imageUrl" alt="{{ slide.name }}" />
                 </div>
@@ -30,7 +30,7 @@
                     <img class="imgwidthauto cursor_pointer" *ngIf="!slide.favourite" src="assets/icon/icons-12.svg"
                       alt="" (click)="changeFavourite(slide)" />
 
-                    <div role="button" class="add-quntity-list" >
+                    <div role="button" class="add-quntity-list" (click)="addToCart(slide)">
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 41 41"
                         xml:space="preserve" width="35px" height="32px">

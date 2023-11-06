@@ -13,18 +13,20 @@ export class CartComponent implements OnInit {
   total: number = 0
   deliveryTot: number = 0
   taxTot: number = 0
+  noProduct: boolean = false
 
   constructor(
     private spinner: NgxUiLoaderService,
-    private router: Router
-  ) { }
-  noProduct: boolean = false
+    private router: Router,
+  ) {
+    
+  }
+
   ngOnInit(): void {
     this.spinner.start()
     setTimeout(() => {
       this.spinner.stop()
     }, 1000);
-    console.log(this.cartProductByLocal?.length);
     if (this.cartProductByLocal?.length == undefined) {
       this.noProduct = true
     }
