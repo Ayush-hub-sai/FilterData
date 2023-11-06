@@ -9,26 +9,28 @@
       <div class="col-xl-12 col-md-12 col-12">
         <owl-carousel-o [options]="customOptions">
           <ng-container *ngFor="let slide of products">
-            <ng-template class="item-block" carouselSlide [id]="slide.id">
+            <ng-template class="item-block " carouselSlide [id]="slide.id">
               <!-- <app-item-block [products]="products"></app-item-block> -->
 
-              <div class="card mt-2 mb-2 ml-2 mr-2">
-                <div class="img_height">
+              <div class="card mt-2 mb-2 ml-2 mr-2 " (click)="goToDetails(slide)">
+                <div class="img_height cursor_pointer">
                   <img class="fixed_image" [src]="slide.imageUrl" alt="{{ slide.name }}" />
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title fontsize-13">{{ slide.brand}}</h5>
-                  <h5 class="card-text fontsize-15">{{ slide.name }}</h5>
+                  <h5 class="card-title fontsize-13 ">{{ slide.brand}}</h5>
+                  <h5 class="card-text fontsize-15 cursor_pointer">{{ slide.name }}</h5>
                   <h5>&nbsp;</h5>
                   <h5 class="card-text fontsize-15">₹ {{ slide.price }}</h5>
 
                   <div class="d-flex justify-content-between">
+
                     <img class="imgwidthauto cursor_pointer" *ngIf="slide.favourite" src="assets/icon/icons-16.svg"
                       alt="" (click)="changeFavourite(slide)" />
+
                     <img class="imgwidthauto cursor_pointer" *ngIf="!slide.favourite" src="assets/icon/icons-12.svg"
                       alt="" (click)="changeFavourite(slide)" />
 
-                    <div role="button" class="add-quntity-list">
+                    <div role="button" class="add-quntity-list" >
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 41 41"
                         xml:space="preserve" width="35px" height="32px">

@@ -112,11 +112,17 @@ export class ProductComponent implements OnInit, OnChanges {
 
   buyNow(item) {
   }
-  
+
   changeFavourite(item: any) {
     const favourite = this.products.find(cartItem => cartItem.id === item.id);
     if (favourite) {
       favourite.favourite = favourite.favourite == true ? false : true
     }
+  }
+
+
+  goToDetails(slide) {
+    console.log(slide);
+
   }
 }
